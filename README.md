@@ -36,6 +36,10 @@ To Start Server:
 To Visit App:
 `localhost:5173`
 
+## Live Application URL
+
+The Application is deployed in https://voltmoneytodoapplication.netlify.app/
+
 ## Application design
 
 #### Components
