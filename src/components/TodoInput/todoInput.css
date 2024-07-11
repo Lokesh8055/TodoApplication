@@ -1,0 +1,28 @@
+.todo-input {
+  position: relative;
+  display: flex;
+}
+
+.todo-input input {
+  width: 100%;
+  background-color: var(--dark-desaturated-blue);
+  height: 50px;
+  font-size: 1rem;
+  color: var(--light-grayish-blue-two);
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+}
+
+.light .todo-input input {
+  color: var(--light-grayish-blue-four);
+  background-color: var(--light-gray);
+}
+
+.todo-input input::placeholder {
+  color: var(--dark--grayish-blue);
+}
+
+.light .todo-input input::placeholder {
+  color: var(--light-grayish-blue);
+}

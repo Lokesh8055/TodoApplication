@@ -1,0 +1,88 @@
+li {
+  width: 100%;
+  background-color: var(--dark-desaturated-blue);
+  height: 50px;
+  font-size: 1rem;
+  color: var(--light-grayish-blue-two);
+  padding: 15px;
+  border-bottom: 1px solid hsl(233, 18%, 38%);
+  display: flex;
+  justify-content: space-between;
+}
+
+.light li {
+  background-color: var(--light-gray);
+  color: var(--light-grayish-blue-four);
+  border-bottom: 1px solid var(--light-grayish-blue-two);
+}
+
+li.hidden {
+  display: none;
+}
+
+li .list {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  -webkit-appearance: none;
+  border: 1px solid var(--dark--grayish-blue);
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.light .todos input {
+  border: 1px solid var(--light-grayish-blue-two);
+}
+
+.checkbox:checked {
+  background: url('../../images/icon-check.svg'), linear-gradient(to right, var(--primary-blue), var(--primary-pink));
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+}
+
+.checkbox:checked~.text {
+  text-decoration: line-through;
+  color: var(--dark--grayish-blue);
+}
+
+.light .checkbox:checked~.text{
+  color: var(--light-grayish-blue-two);
+}
+
+.iconList {
+  display: flex;
+  align-items: center;
+}
+
+.iconList span:first-child {
+  margin-right: 10px;
+}
+
+.iconList img {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  display: block;
+}
+
+.todo-update {
+  background-color: hsl(268, 47%, 67%);
+  text-align: center;
+  height: 20px;
+  font-size: 1rem;
+  color: var(--light-grayish-blue-two);
+  padding: 10px 10px 10px 0;
+  border: none;
+  border-radius: 4cap;
+}
+
+.light .todo-update {
+  color: white;
+  background-color: hsl(280, 4%, 14%);
+}

@@ -1,0 +1,8 @@
+.todos {
+    margin-bottom: 50px;
+}
+
+.todos ul {
+  margin-top: 20px;
+  border-top-left-radius: 8px;
+}
