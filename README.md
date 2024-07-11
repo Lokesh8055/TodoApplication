@@ -22,7 +22,6 @@ Used React Context API
 1. Implemented data persistence in local Storage, so that tasks are stored and retrieved even after the page refreshes.
 2. Implemented Light and Dark theme and persisted in local Storage.
 3. Application is Responsive and will work on different screen sizes.
-4. User can only add todo in string
 
 
 ## Installation and Setup Instructions
@@ -43,3 +42,10 @@ To Visit App:
 
 1. **TodoInput** Component : It displays the input where user can enter the value
 2. **TodoList** Component : It Displays the list of todos
+
+## Screenshots
+
+![Desktop Dark](/screenshots/desktopDark.jpg)
+![Desktop Light](/screenshots/desktopLight.jpg)
+![Mobile Dark](/screenshots/mobileDark.jpg)
+![Mobile Light](/screenshots/mobileLight.jpg)
