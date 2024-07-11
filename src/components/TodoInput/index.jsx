@@ -18,15 +18,7 @@ function TodoInput() {
     }
   };
 
-  const handleOnChange = (e) => {
-    const value = e.target.value;
-    const stringRegex = /^[a-zA-Z]+$/.test(value);
-    if (stringRegex) {
-      setTitle(value);
-    } else {
-      setTitle('');
-    }
-  };
+  const handleOnChange = (e) => setTitle(e.target.value);
 
   return (
     <div className="todo-input">
