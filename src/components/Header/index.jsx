@@ -7,7 +7,7 @@ const Header = ({ theme, toggleTheme }) => {
     <div className="header">
       <h1>todo</h1>
       <img
-        src={theme === 'dark' ? iconMoon : iconSun}
+        src={theme === 'dark' ? iconSun : iconMoon}
         alt="theme-icon"
         onClick={toggleTheme}
       />

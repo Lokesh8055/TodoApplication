@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 import { useTodoContext } from '../../context/TodoContext';
 import crossSvg from '../../images/icon-cross.svg';
 import updateSvg from '../../images/icon-update.svg';
@@ -8,6 +10,8 @@ import './todoItem.css';
 function TodoItem({ todo }) {
   const { id, title, completed } = todo;
   const { updateTodo, removeTodo, completeTodo } = useTodoContext();
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id });
 
   const [toggleUpdate, setToggleUpdate] = useState(false);
   const [name, setName] = useState(title);
@@ -23,13 +27,15 @@ function TodoItem({ todo }) {
   };
 
   const handleRemoveTodo = () => removeTodo(id);
-  const handleCompleteTodo = (e) => completeTodo(e);
   const isCompleted = completed ? 'checked' : '';
 
-  // const classCheckbox = `${completed ? 'hidden' : ''}`;
+  const style = {
+    transition,
+    transform: CSS.Transform.toString(transform),
+  };
 
   return (
-    <li>
+    <li ref={setNodeRef} {...attributes} {...listeners} style={style}>
       {/* checkbox - see if it is completed or not */}
       <div className="list">
         <input
@@ -38,13 +44,19 @@ function TodoItem({ todo }) {
           className="checkbox"
           checked={isCompleted}
           value={id}
-          onChange={(e) => handleCompleteTodo(e)}
+          onChange={(e) => {
+            e.stopPropagation();
+            completeTodo(e);
+          }}
         />
         {/* show Input box if edit is clicked else show title */}
         {toggleUpdate ? (
           <input
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => {
+              e.stopPropagation();
+              setName(e.target.value);
+            }}
             className="todo-update"
             type="text"
           />

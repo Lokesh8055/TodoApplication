@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { v6 } from 'uuid';
-import { useTodoContext } from '../../context/TodoContext';
 import './todoInput.css';
 
-function TodoInput() {
+function TodoInput({ addTodo }) {
   const [title, setTitle] = useState('');
-  const { addTodo } = useTodoContext();
 
   const handleAddTodo = (e) => {
     if (e.keyCode === 13 && e.target.value.length > 0) {

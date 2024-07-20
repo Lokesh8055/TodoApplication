@@ -1,4 +1,16 @@
 import {
+  KeyboardSensor,
+  MouseSensor,
+  PointerSensor,
+  TouchSensor,
+  useSensor,
+  useSensors,
+} from '@dnd-kit/core';
+import {
+  arrayMove,
+  sortableKeyboardCoordinates,
+} from '@dnd-kit/sortable';
+import {
   createContext,
   useState,
   useContext,
@@ -11,7 +23,7 @@ const TodoContext = createContext();
 const INITIAL_STATE = [
   {
     id: v6(),
-    title: 'one',
+    title: 'wake up in the morning',
     completed: false,
   },
 ];
@@ -31,38 +43,30 @@ export const TodoProvider = (props) => {
 
   // Remove Todo
   const removeTodo = (id) => {
-    setTodoList(todoList.filter((todo) => todo.id != id));
+    setTodoList((todoList) =>
+      todoList.filter((todo) => todo.id !== id)
+    );
   };
 
   // Update Todo
-  const updateTodo = (todo) => {
-    let index = -1;
-    const newTodos = [...todoList];
-    for (let i = 0; i < newTodos.length; i++) {
-      if (newTodos[i].id === todo.id) {
-        index = i;
-        break;
-      }
-    }
-
-    if (index !== -1) {
-      newTodos[index] = todo;
-      setTodoList(newTodos);
-    }
+  const updateTodo = ({ id, title }) => {
+    setTodoList((todoList) =>
+      todoList.map((item) =>
+        item.id === id ? { ...item, title } : item
+      )
+    );
   };
 
   // Complete Todo
   const completeTodo = (e) => {
-    const filterTodos = todoList.map((item) => {
-      if (item.id === e.target.value) {
-        item.completed = false;
-        if (e.target.checked) {
-          item.completed = true;
-        }
-      }
-      return item;
-    });
-    setTodoList(filterTodos);
+    const todoId = e.target.value;
+    const isChecked = e.target.checked;
+
+    const updatedTodos = todoList.map((item) =>
+      item.id === todoId ? { ...item, completed: isChecked } : item
+    );
+
+    setTodoList(updatedTodos);
   };
 
   // setItem in localStorage
@@ -70,10 +74,50 @@ export const TodoProvider = (props) => {
     localStorage.setItem('todos', JSON.stringify(todoList));
   }, [todoList]);
 
+  // Drag and Drop functionality
+  const getTaskPosition = (id) =>
+    todoList.findIndex((todo) => todo.id === id);
+
+  const handleDragEnd = (event) => {
+    console.log('event', event);
+    const { active, over } = event;
+
+    if (active.id === over.id) return;
+
+    setTodoList((todoList) => {
+      const originalPosition = getTaskPosition(active.id);
+      const newPosition = getTaskPosition(over.id);
+
+      return arrayMove(todoList, originalPosition, newPosition);
+    });
+  };
+
+  // Touch + Keyboard controls
+  const sensors = useSensors(
+    useSensor(MouseSensor, {
+      // Require the mouse to move by 10 pixels before activating
+      activationConstraint: {
+        distance: 10,
+      },
+    }),
+    useSensor(TouchSensor, {
+      // Press delay of 100ms, with tolerance of 5px of movement
+      activationConstraint: {
+        delay: 100,
+        tolerance: 5,
+      },
+    }),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
+
   return (
     <TodoContext.Provider
       value={{
         todoList,
+        handleDragEnd,
+        sensors,
         addTodo,
         removeTodo,
         updateTodo,

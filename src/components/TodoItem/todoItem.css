@@ -8,6 +8,7 @@ li {
   border-bottom: 1px solid hsl(233, 18%, 38%);
   display: flex;
   justify-content: space-between;
+  touch-action: none;
 }
 
 .light li {
