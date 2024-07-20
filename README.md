@@ -15,6 +15,9 @@ User will be able to edit and update existing tasks.
 4. Completed:
 Users will be able to mark task as complete on click of checkbox.
 
+5. Drag and Drop functionality
+Users will be able to drag and drop so tasks it can be sorted.
+
 5. State Management:
 Used React Context API
 
