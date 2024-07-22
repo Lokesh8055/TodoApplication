@@ -7,6 +7,7 @@ import Footer from './Footer';
 import TodoList from './TodoList';
 import { useTodoContext } from '../context/TodoContext';
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
+import { TODO_CONST } from '../constants';
 
 const Container = () => {
   const { theme, toggleTheme } = useThemeContext();
@@ -37,7 +38,7 @@ const Container = () => {
         </DndContext>
         <Footer />
       </div>
-      <p className="reOrderText">Drag and drop to reorder list</p>
+      <p className="reOrderText">{TODO_CONST.DRAG_AND_DROP}</p>
     </>
   );
 };

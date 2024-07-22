@@ -17,6 +17,7 @@ import {
   useEffect,
 } from 'react';
 import { v6 } from 'uuid';
+import { TODO_CONST } from '../constants';
 
 const TodoContext = createContext();
 
@@ -116,17 +117,17 @@ export const TodoProvider = (props) => {
   const FILTER_LIST = [
     {
       id: 1,
-      name: 'All',
+      name: TODO_CONST.ALL,
       onClick: () => console.log('all'),
     },
     {
       id: 2,
-      name: 'Active',
+      name: TODO_CONST.ACTIVE,
       onClick: () => console.log('active'),
     },
     {
       id: 3,
-      name: 'Completed',
+      name: TODO_CONST.COMPLETED,
       onClick: () => console.log('Completed'),
     },
   ];

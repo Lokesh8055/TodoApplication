@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTodoContext } from '../../context/TodoContext';
 import './footer.css';
+import { TODO_CONST } from '../../constants';
 
 const Footer = () => {
   const { itemsLeft, FILTER_LIST } = useTodoContext();
@@ -43,13 +44,15 @@ const Footer = () => {
   return (
     <>
       <div className="footer">
-        <p>{itemsLeft} items left</p>
+        <p>
+          {itemsLeft} {TODO_CONST.ITEMS_LEFT}
+        </p>
         {showList('listDesktop')}
         <p
           className={`clear ${activeCompleted ? 'active' : ''}`}
           onClick={handleClearCompleted}
         >
-          Clear Completed
+          {TODO_CONST.CLEAR} {TODO_CONST.COMPLETED}
         </p>
       </div>
       {showList('listMobile')}
