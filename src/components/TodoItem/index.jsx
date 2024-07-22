@@ -41,13 +41,14 @@ function TodoItem({ todo }) {
       {...attributes}
       {...listeners}
       style={style}
-      role="listItem"
+      role="listitem"
     >
       {/* checkbox - see if it is completed or not */}
       <div className="list">
-        <label htmlFor="complete"></label>
+        <label htmlFor="completeTodo"></label>
         <input
-          id="complete"
+          id="completeTodo"
+          name="completeTodo"
           type="checkbox"
           className="checkbox"
           checked={isCompleted}
@@ -59,15 +60,20 @@ function TodoItem({ todo }) {
         />
         {/* show Input box if edit is clicked else show title */}
         {toggleUpdate ? (
-          <input
-            value={name}
-            onChange={(e) => {
-              e.stopPropagation();
-              setName(e.target.value);
-            }}
-            className="todo-update"
-            type="text"
-          />
+          <>
+            <label htmlFor="updateTodo"></label>
+            <input
+              id="updateTodo"
+              name="updateTodo"
+              value={name}
+              onChange={(e) => {
+                e.stopPropagation();
+                setName(e.target.value);
+              }}
+              className="todo-update"
+              type="text"
+            />
+          </>
         ) : (
           <div className="text">{title}</div>
         )}

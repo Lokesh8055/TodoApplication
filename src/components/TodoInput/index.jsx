@@ -20,8 +20,10 @@ function TodoInput({ addTodo }) {
 
   return (
     <div className="todo-input">
+      <label htmlFor="addTodo"></label>
       <input
         value={title}
+        id="addTodo"
         onChange={handleOnChange}
         placeholder="Create a new todo..."
         aria-label="todo-input"
