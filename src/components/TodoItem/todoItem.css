@@ -1,7 +1,6 @@
-li {
+.todoItem {
   width: 100%;
   background-color: var(--dark-desaturated-blue);
-  height: 50px;
   font-size: 1rem;
   color: var(--light-grayish-blue-two);
   padding: 15px;
@@ -11,17 +10,17 @@ li {
   touch-action: none;
 }
 
-.light li {
+.light .todoItem {
   background-color: var(--light-gray);
   color: var(--light-grayish-blue-four);
   border-bottom: 1px solid var(--light-grayish-blue-two);
 }
 
-li.hidden {
+.todoItem.hidden {
   display: none;
 }
 
-li .list {
+.todoItem .list {
   display: flex;
   align-items: center;
 }

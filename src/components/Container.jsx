@@ -3,6 +3,7 @@ import { DndContext, closestCorners } from '@dnd-kit/core';
 import { useThemeContext } from '../context/ThemeContext';
 import Header from './Header';
 import TodoInput from './TodoInput';
+import Footer from './Footer';
 import TodoList from './TodoList';
 import { useTodoContext } from '../context/TodoContext';
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
@@ -34,6 +35,7 @@ const Container = () => {
         >
           <TodoList todoList={todoList} />
         </DndContext>
+        <Footer />
       </div>
       <p className="reOrderText">Drag and drop to reorder list</p>
     </>

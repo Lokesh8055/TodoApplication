@@ -9,22 +9,23 @@
 :root {
    --primary-blue: #57ddff;
    --primary-pink: #c058f3;
+   --secondary-blue: #3A7CFD;
    --transition-delay: 1s;
 
-  /* Dark Theme */
 
    --dark-blue: #161722;
    --dark-desaturated-blue: #25273c;
    --dark--grayish-blue: #777a92;
    --dark-grayish-blue-two: #5B5E7E;
+   --dark-grayish-blue-three: #494C6B;
 
-   /* Light Theme */
    --light-gray: #fafafa;
    --light-grayish-blue: #e4e5f1;
    --light-grayish-blue-two: #d2d3db;
   --light-grayish-blue-three: #9394a5;
   --light-grayish-blue-four: #484b6a;
   --light-grayish-blue-five: #9495A5;
+  --light-white: #E3E4F1;
 }
 
 body {
@@ -61,7 +62,7 @@ li {
     justify-content: center;
     flex-direction: column;
     width: 500px;
-    margin: -230px auto 0 auto;
+    margin: -230px auto 50px auto;
 }
 
 .reOrderText {

@@ -79,7 +79,6 @@ export const TodoProvider = (props) => {
     todoList.findIndex((todo) => todo.id === id);
 
   const handleDragEnd = (event) => {
-    console.log('event', event);
     const { active, over } = event;
 
     if (active.id === over.id) return;
@@ -112,16 +111,38 @@ export const TodoProvider = (props) => {
     })
   );
 
+  const itemsLeft = todoList.length;
+
+  const FILTER_LIST = [
+    {
+      id: 1,
+      name: 'All',
+      onClick: () => console.log('all'),
+    },
+    {
+      id: 2,
+      name: 'Active',
+      onClick: () => console.log('active'),
+    },
+    {
+      id: 3,
+      name: 'Completed',
+      onClick: () => console.log('Completed'),
+    },
+  ];
+
   return (
     <TodoContext.Provider
       value={{
         todoList,
+        itemsLeft,
         handleDragEnd,
         sensors,
         addTodo,
         removeTodo,
         updateTodo,
         completeTodo,
+        FILTER_LIST,
       }}
     >
       {props.children}

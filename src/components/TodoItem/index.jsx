@@ -35,7 +35,13 @@ function TodoItem({ todo }) {
   };
 
   return (
-    <li ref={setNodeRef} {...attributes} {...listeners} style={style}>
+    <li
+      className="todoItem"
+      ref={setNodeRef}
+      {...attributes}
+      {...listeners}
+      style={style}
+    >
       {/* checkbox - see if it is completed or not */}
       <div className="list">
         <input
