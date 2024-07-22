@@ -4,15 +4,12 @@ import iconSun from '../../images/icon-sun.svg';
 import { TODO_CONST } from '../../constants';
 
 const Header = ({ theme, toggleTheme }) => {
+  const image = theme === TODO_CONST.THEME.DARK ? iconSun : iconMoon;
   return (
-    <div className="header">
+    <header>
       <h1>{TODO_CONST.HEADING}</h1>
-      <img
-        src={theme === 'dark' ? iconSun : iconMoon}
-        alt="theme-icon"
-        onClick={toggleTheme}
-      />
-    </div>
+      <img src={image} alt="theme-icon" onClick={toggleTheme} />
+    </header>
   );
 };
 

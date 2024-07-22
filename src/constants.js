@@ -6,4 +6,8 @@ export const TODO_CONST = {
   CLEAR: 'Clear',
   ITEMS_LEFT: 'items left',
   DRAG_AND_DROP: 'Drag and drop to reorder list',
+  THEME: {
+    DARK: 'dark',
+    LIGHT: 'light',
+  },
 };

@@ -3,7 +3,7 @@ import { DndContext, closestCorners } from '@dnd-kit/core';
 import { useThemeContext } from '../context/ThemeContext';
 import Header from './Header';
 import TodoInput from './TodoInput';
-import Footer from './Footer';
+import Filters from './Filters';
 import TodoList from './TodoList';
 import { useTodoContext } from '../context/TodoContext';
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
@@ -27,18 +27,22 @@ const Container = () => {
       <div className="background"></div>
       <div className="container">
         <Header theme={theme} toggleTheme={toggleTheme} />
-        <TodoInput addTodo={addTodo} />
-        <DndContext
-          onDragEnd={handleDragEnd}
-          sensors={sensors}
-          collisionDetecttion={closestCorners}
-          modifiers={[restrictToVerticalAxis]}
-        >
-          <TodoList todoList={todoList} />
-        </DndContext>
-        <Footer />
+        <main>
+          <TodoInput addTodo={addTodo} />
+          <DndContext
+            onDragEnd={handleDragEnd}
+            sensors={sensors}
+            collisionDetecttion={closestCorners}
+            modifiers={[restrictToVerticalAxis]}
+          >
+            <TodoList todoList={todoList} />
+          </DndContext>
+          <Filters />
+        </main>
       </div>
-      <p className="reOrderText">{TODO_CONST.DRAG_AND_DROP}</p>
+      <footer className="reOrderText">
+        <p>{TODO_CONST.DRAG_AND_DROP}</p>
+      </footer>
     </>
   );
 };

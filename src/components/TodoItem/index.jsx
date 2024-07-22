@@ -41,11 +41,13 @@ function TodoItem({ todo }) {
       {...attributes}
       {...listeners}
       style={style}
+      role="listItem"
     >
       {/* checkbox - see if it is completed or not */}
       <div className="list">
+        <label htmlFor="complete"></label>
         <input
-          id={id}
+          id="complete"
           type="checkbox"
           className="checkbox"
           checked={isCompleted}

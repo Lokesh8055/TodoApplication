@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useTodoContext } from '../../context/TodoContext';
-import './footer.css';
+import './filters.css';
 import { TODO_CONST } from '../../constants';
 
-const Footer = () => {
+const Filters = () => {
   const { itemsLeft, FILTER_LIST } = useTodoContext();
   const [activeItem, setActiveItem] = useState(null);
   const [activeCompleted, setActiveCompleted] = useState(false);
@@ -60,4 +60,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Filters;

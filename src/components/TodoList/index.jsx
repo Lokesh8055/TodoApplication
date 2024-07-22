@@ -9,16 +9,16 @@ import './todoList.css';
 function TodoList({ todoList }) {
   return (
     <div className="todos">
-      <ul>
-        <SortableContext
-          items={todoList}
-          strategy={verticalListSortingStrategy}
-        >
+      <SortableContext
+        items={todoList}
+        strategy={verticalListSortingStrategy}
+      >
+        <ul role="list">
           {todoList.map((todo) => (
             <TodoItem key={todo.id} todo={todo} />
           ))}
-        </SortableContext>
-      </ul>
+        </ul>
+      </SortableContext>
     </div>
   );
 }
